@@ -1,0 +1,1 @@
+PatientID: P001 | Name: Rahul | Diagnosis: Flu | Report: Rest & Medication
