@@ -1,1 +1,0 @@
-Account: 12345 | Deposit: 5000 | Date: 2026-05-06
