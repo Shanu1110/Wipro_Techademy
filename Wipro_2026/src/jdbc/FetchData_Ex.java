@@ -9,7 +9,7 @@ public static void main(String[] args)
 	try
 {
 	Class.forName("com.mysql.cj.jdbc.Driver");
-	Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/Employees_DB", "root", "Shanu@sql44150");
+	Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/Employees_DB", "root", "passs");
  
 String query="insert into emp values(?, ?, ?, ?, ?, ?)";
 	
