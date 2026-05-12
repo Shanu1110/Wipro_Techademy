@@ -312,7 +312,77 @@ GROUP BY email
 HAVING COUNT(*) > 1;
 
 
+-- LEFT JOIN part
+SELECT e.Emp_id, e.Emp_name, e.salary, d.dept_name, d.location
+FROM Emp e
+LEFT JOIN Dept d ON e.department = d.dept_id
 
- 
- 
- 
+UNION
+
+-- RIGHT JOIN part
+SELECT e.Emp_id, e.Emp_name, e.salary, d.dept_name, d.location
+FROM Emp e
+RIGHT JOIN Dept d ON e.department = d.dept_id;
+
+SELECT e.Emp_id, e.Emp_name, e.salary, d.dept_name, d.location
+FROM Emp e
+FULL OUTER JOIN Dept d
+ON e.department = d.dept_id;
+
+ SELECT e1.Emp_name AS Employee1, e2.Emp_name AS Employee2, e1.salary
+FROM Emp e1
+JOIN Emp e2 ON e1.salary = e2.salary
+WHERE e1.Emp_id < e2.Emp_id;
+
+
+SELECT e1.Emp_id AS Emp1_ID, e1.Emp_name AS Emp1_Name,
+       e2.Emp_id AS Emp2_ID, e2.Emp_name AS Emp2_Name,
+       e1.department
+FROM Emp e1
+JOIN Emp e2 ON e1.department = e2.department
+WHERE e1.Emp_id <> e2.Emp_id;
+
+
+CREATE TABLE Customers (
+    customer_id INT PRIMARY KEY AUTO_INCREMENT,
+    customer_name VARCHAR(100) NOT NULL,
+    email VARCHAR(100) UNIQUE,
+    phone VARCHAR(15),
+    address VARCHAR(255),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);emp
+
+
+CREATE TABLE Products (
+    product_id INT PRIMARY KEY AUTO_INCREMENT,
+    product_name VARCHAR(100) NOT NULL,
+    category VARCHAR(50),
+    price DECIMAL(10,2) NOT NULL,
+    stock INT DEFAULT 0,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+
+CREATE TABLE Orders (
+    order_id INT PRIMARY KEY AUTO_INCREMENT,
+    customer_id INT,
+    order_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    status VARCHAR(20) DEFAULT 'Pending',
+    total_amount DECIMAL(10,2),
+    FOREIGN KEY (customer_id) REFERENCES Customers(customer_id)
+);
+
+
+CREATE TABLE Payments (
+    payment_id INT PRIMARY KEY AUTO_INCREMENT,
+    order_id INT,
+    payment_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    amount DECIMAL(10,2),
+    payment_method VARCHAR(20),
+    status VARCHAR(20) DEFAULT 'Completed',
+    FOREIGN KEY (order_id) REFERENCES Orders(order_id)
+);
+
+show tables;
+select * from emp;
+show databases;
